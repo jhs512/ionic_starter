@@ -13,7 +13,7 @@
       </ion-header>
 
       <ion-button expand="block" fill="solid" @click="presentActionSheet">Show Action Sheet1</ion-button>
-      <ExploreContainer name="Tab 1 page" style="background-color:red;" />
+      <ExploreContainer name="Tab 1 page???" style="background-color:red;" />
     </ion-content>
   </ion-page>
 </template>
