@@ -27,12 +27,15 @@ import { IonButton, actionSheetController } from '@ionic/vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import { caretForwardCircle, close, heart, trash, share } from 'ionicons/icons';
+import { useGlobalState } from '@/stores'
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton },
   setup() {
     async function presentActionSheet() {
+      const globalState = useGlobalState();
+
       const actionSheet = await actionSheetController
         .create({
           header: 'Albums',
