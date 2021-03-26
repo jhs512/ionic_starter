@@ -22,13 +22,15 @@
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { useGlobalState } from '@/stores'
+import { useMainApi } from '@/apis';
 
 export default  {
   name: 'Detail',
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   setup() {
     const globalState = useGlobalState();
-
+    const mainApi = useMainApi();
+    
     return {
       globalState
     }

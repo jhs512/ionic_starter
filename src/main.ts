@@ -25,11 +25,14 @@ import './theme/variables.css';
 
 // 전역상태 불러오기
 import { createGlobalState, globalStateSymbol } from "@/stores"
+import { createMainApi, mainApiSymbol } from "@/apis"
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
-  .provide(globalStateSymbol, createGlobalState());
+  .provide(globalStateSymbol, createGlobalState())
+  .provide(mainApiSymbol, createMainApi())
+
   
 router.isReady().then(() => {
   app.mount('#app');
