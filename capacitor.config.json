@@ -11,7 +11,9 @@
   },
   "cordova": {},
   "server": {
-    "url": "http://10.78.101.249:8100",
-    "cleartext": true
+    "url": "http://192.168.0.5:8100",
+    "cleartext": true,
+    "originalUrl": "http://10.78.101.249:8100",
+    "originalCleartext": true
   }
 }

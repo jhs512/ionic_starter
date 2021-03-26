@@ -5,28 +5,82 @@ import Tabs from '../views/Tabs.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/home/main'
   },
   {
-    path: '/tabs/',
+    path: '/home/',
     component: Tabs,
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/home/main'
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
+        path: 'main',
+        component: () => import('@/views/home/Main.vue')
+      },
+    ]
+  },
+  {
+    path: '/member/',
+    component: Tabs,
+    children: [
+      {
+        path: '',
+        redirect: '/member/login'
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
+        path: 'login',
+        component: () => import('@/views/member/Login.vue')
       },
       {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
-      }
+        path: 'join',
+        component: () => import('@/views/member/Join.vue')
+      },
+      {
+        path: 'myPage',
+        component: () => import('@/views/member/MyPage.vue')
+      },
+    ]
+  },
+  {
+    path: '/article/',
+    component: Tabs,
+    children: [
+      {
+        path: '',
+        redirect: '/article/list'
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/article/List.vue')
+      },
+      {
+        path: 'detail',
+        component: () => import('@/views/article/Detail.vue')
+      },
+      {
+        path: 'write',
+        component: () => import('@/views/article/Write.vue')
+      },
+      {
+        path: 'modify',
+        component: () => import('@/views/article/Modify.vue')
+      },
+    ]
+  },
+  {
+    path: '/setting/',
+    component: Tabs,
+    children: [
+      {
+        path: '',
+        redirect: '/setting/main'
+      },
+      {
+        path: 'main',
+        component: () => import('@/views/setting/Main.vue')
+      },
     ]
   }
 ]
