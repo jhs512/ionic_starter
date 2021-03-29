@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '../views/Tabs.vue'
+import { useGlobalStateOnOutsideOfVue } from '@/stores';
+
+const globalState = useGlobalStateOnOutsideOfVue();
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,7 +34,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'login',
-        component: () => import('@/views/member/Login.vue')
+        component: () => globalState.isLogined ? import('@/views/member/MyPage.vue') : import('@/views/member/Login.vue')
       },
       {
         path: 'join',
