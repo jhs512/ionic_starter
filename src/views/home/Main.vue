@@ -11,6 +11,9 @@
           <ion-title size="large">홈 - 메인</ion-title>
         </ion-toolbar>
       </ion-header>
+      <div class="bg-red-500">
+        ㅋㅋㅋ
+      </div>
     </ion-content>
   </ion-page>
 </template>
