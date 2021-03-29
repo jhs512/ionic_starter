@@ -25,6 +25,12 @@ import './theme/variables.css';
 
 import './index.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome, faUser, faList, faCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faHome, faUser, faList, faCog);
+
 // 전역상태 불러오기
 import { createGlobalState, globalStateSymbol } from "@/stores"
 import { createMainApi, mainApiSymbol } from "@/apis"
@@ -32,9 +38,9 @@ import { createMainApi, mainApiSymbol } from "@/apis"
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .component('font-awesome-icon', FontAwesomeIcon)
   .provide(globalStateSymbol, createGlobalState())
   .provide(mainApiSymbol, createMainApi())
-
   
 router.isReady().then(() => {
   app.mount('#app');

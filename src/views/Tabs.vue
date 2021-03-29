@@ -3,22 +3,22 @@
     <ion-tabs>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="home" href="/home">
-          <ion-icon :icon="homeOutline" />
+          <font-awesome-icon class="text-lg h-7" icon="home" />
           <ion-label>홈</ion-label>
         </ion-tab-button>
         
         <ion-tab-button tab="member" href="/member">
-          <ion-icon :icon="accessibilityOutline" />
+          <font-awesome-icon class="text-lg h-7" icon="user" />
           <ion-label>회원</ion-label>
         </ion-tab-button>
           
         <ion-tab-button tab="article" href="/article">
-          <ion-icon :icon="listOutline" />
+          <font-awesome-icon class="text-lg h-7" icon="list" />
           <ion-label>게시물</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="setting" href="/setting">
-          <ion-icon :icon="settingsOutline" />
+          <font-awesome-icon class="text-lg h-7" icon="cog" />
           <ion-label>세팅</ion-label>
         </ion-tab-button>
         
@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts">
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
+import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonPage } from '@ionic/vue';
 import { homeOutline, listOutline, settingsOutline, accessibilityOutline } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
+  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonPage },
   setup() {
     return {
       listOutline, 

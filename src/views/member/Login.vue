@@ -13,7 +13,9 @@
       </ion-header>
 
       <ion-custom-body class="items-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ullam neque, a ratione assumenda amet omnis eligendi accusamus deserunt dicta, maiores iusto qui sunt voluptas excepturi aliquam consequatur, harum sed.
+        <div class="logo-bar">
+          
+        </div>
       </ion-custom-body>
     </ion-content>
   </ion-page>
