@@ -12,7 +12,7 @@
         </ion-toolbar>
       </ion-header>
       <div class="bg-red-500">
-        ㅋㅋㅋ
+        {{globalState.isLogined}}
       </div>
     </ion-content>
   </ion-page>

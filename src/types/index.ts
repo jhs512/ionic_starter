@@ -1,6 +1,9 @@
 export interface GlobalState {
-  loginedMember:Member;
+  loginedMember: Member;
+  authKey: string;
   isLogined: boolean;
+  setLogined(authKey: string, member: Member): void;
+  setLogouted(): void;
 }
 
 export interface Entity {
