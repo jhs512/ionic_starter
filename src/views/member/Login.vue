@@ -12,10 +12,29 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-custom-body class="items-center">
-        <div class="logo-bar">
-          
+      <ion-custom-body class="justify-center">
+        <div class="logo-box text-center">
+          <span>
+            <span class="text-3xl">
+              <font-awesome-icon icon="lemon" />
+            </span>
+            <span class="font-bold text-3xl">
+              DESIGN LEMON
+            </span>
+          </span>
         </div>
+
+        <form action="">
+          <div>
+            
+          </div>
+          <div>
+
+          </div>
+          <div>
+
+          </div>
+        </form>
       </ion-custom-body>
     </ion-content>
   </ion-page>

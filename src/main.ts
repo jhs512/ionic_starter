@@ -26,10 +26,10 @@ import './theme/variables.css';
 import './index.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faUser, faList, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUser, faList, faCog, faLemon } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faHome, faUser, faList, faCog);
+library.add(faHome, faUser, faList, faCog, faLemon);
 
 // 전역상태 불러오기
 import { createGlobalState, globalStateSymbol } from "@/stores"
