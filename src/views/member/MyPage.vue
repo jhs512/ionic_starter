@@ -8,7 +8,10 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-custom-body>
+      <ion-custom-body class="justify-center">
+        <div class="logo-box text-center">
+          <ion-button @click="logout" expand="block">로그아웃</ion-button>
+        </div>
       </ion-custom-body>
     </ion-content>
   </ion-page>
@@ -19,18 +22,26 @@
 </style>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
 import { useGlobalState } from '@/stores'
 import {IonCustomBody, IonCustomHeader} from '@/components/';
+import { useRouter } from 'vue-router';
 
 export default  {
   name: 'MyPage',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCustomBody, IonCustomHeader },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCustomBody, IonCustomHeader, IonButton },
   setup() {
     const globalState = useGlobalState();
+    const router = useRouter();
+
+    const logout = () => {
+      globalState.setLogouted();
+      router.replace('/member/login');
+    };
 
     return {
-      globalState
+      globalState,
+      logout
     }
   }
 }

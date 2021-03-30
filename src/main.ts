@@ -34,6 +34,7 @@ library.add(faHome, faUser, faList, faCog, faLemon);
 // 전역상태 불러오기
 import { createGlobalState, globalStateSymbol } from "@/stores"
 import { createMainApi, mainApiSymbol } from "@/apis"
+import { createMainService, mainServiceSymbol } from "@/services"
 
 const app = createApp(App)
   .use(IonicVue)
@@ -41,6 +42,7 @@ const app = createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
   .provide(globalStateSymbol, createGlobalState())
   .provide(mainApiSymbol, createMainApi())
+  .provide(mainServiceSymbol, createMainService())
   
 router.isReady().then(() => {
   app.mount('#app');
