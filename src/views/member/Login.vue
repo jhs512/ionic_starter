@@ -26,13 +26,23 @@
 
         <form action="">
           <div>
-            
+            <ion-item>
+              <ion-label position="floating">로그인아이디</ion-label>
+              <ion-input maxlength="20"></ion-input>
+            </ion-item>
           </div>
           <div>
-
+            <ion-item>
+              <ion-label position="floating">로그인비번</ion-label>
+              <ion-input maxlength="20" type="password"></ion-input>
+            </ion-item>
           </div>
-          <div>
+          <div class="py-2 px-4">
+            <ion-button expand="block">로그인</ion-button>
+          </div>
 
+          <div class="py-2 px-4">
+            아직 <ion-custom-link to="/member/join">회원가입</ion-custom-link>을 하지 않으셨나요?
           </div>
         </form>
       </ion-custom-body>
@@ -45,13 +55,13 @@
 </style>
 
 <script lang="ts">
-import { IonCustomBody } from '@/components';
+import { IonCustomBody, IonCustomLink } from '@/components';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { useGlobalState } from '@/stores'
 
 export default  {
   name: 'Login',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCustomBody },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCustomBody, IonCustomLink },
   setup() {
     const globalState = useGlobalState();
 
