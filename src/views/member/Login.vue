@@ -28,7 +28,7 @@
           <div>
             <ion-item>
               <ion-label position="floating">로그인아이디</ion-label>
-              <ion-input maxlength="20"></ion-input>
+              <ion-input ref="loginIdInput" maxlength="20"></ion-input>
             </ion-item>
           </div>
           <div>
@@ -56,17 +56,38 @@
 
 <script lang="ts">
 import { IonCustomBody, IonCustomLink } from '@/components';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonInput, IonItem, IonButton } from '@ionic/vue';
 import { useGlobalState } from '@/stores'
+import { onMounted, ref } from 'vue';
 
 export default  {
   name: 'Login',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCustomBody, IonCustomLink },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonLabel, IonInput, IonItem, IonButton, IonCustomBody, IonCustomLink },
   setup() {
     const globalState = useGlobalState();
 
+    const loginIdInput = ref();
+
+    onMounted(async () => {
+      if ( !!loginIdInput.value == false ) return;
+
+      setTimeout(async () => {
+        await loginIdInput.value.$el.setFocus();
+      }, 2000);
+
+      /*
+      loginIdInput.value.$el.getInputElement().then((input: any) => {
+        input.value = 555;
+      });
+      */
+      
+      
+      //const input = await loginIdInput.value.$el.getInputElement();
+    });
+
     return {
-      globalState
+      globalState,
+      loginIdInput
     }
   }
 }
