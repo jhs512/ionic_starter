@@ -1,10 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>회원 - 로그인</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <ion-custom-header>회원 - 로그인</ion-custom-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -55,8 +51,8 @@
 </style>
 
 <script lang="ts">
-import { IonCustomBody, IonCustomLink } from '@/components';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonInput, IonItem, IonButton } from '@ionic/vue';
+import {IonCustomBody, IonCustomHeader, IonCustomLink} from '@/components/';
 import { useGlobalState } from '@/stores'
 import { reactive } from 'vue';
 import { useMainApi } from '@/apis';
@@ -71,7 +67,7 @@ const useLoginFormState = () => {
 
 export default  {
   name: 'Login',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonLabel, IonInput, IonItem, IonButton, IonCustomBody, IonCustomLink },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonLabel, IonInput, IonItem, IonButton, IonCustomBody, IonCustomLink, IonCustomHeader },
   setup() {
     const globalState = useGlobalState();
     const loginFormState = useLoginFormState();
