@@ -24,21 +24,21 @@
           </span>
         </div>
 
-        <form action="">
+        <form @submit.prevent="checkAndLogin">
           <div>
             <ion-item>
               <ion-label position="floating">로그인아이디</ion-label>
-              <ion-input ref="loginIdInput" maxlength="20"></ion-input>
+              <ion-input v-model="loginFormState.loginId" maxlength="20"></ion-input>
             </ion-item>
           </div>
           <div>
             <ion-item>
               <ion-label position="floating">로그인비번</ion-label>
-              <ion-input maxlength="20" type="password"></ion-input>
+              <ion-input v-model="loginFormState.loginPw" maxlength="20" type="password"></ion-input>
             </ion-item>
           </div>
           <div class="py-2 px-4">
-            <ion-button expand="block">로그인</ion-button>
+            <ion-button type="submit" expand="block">로그인</ion-button>
           </div>
 
           <div class="py-2 px-4">
@@ -58,36 +58,63 @@
 import { IonCustomBody, IonCustomLink } from '@/components';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonInput, IonItem, IonButton } from '@ionic/vue';
 import { useGlobalState } from '@/stores'
-import { onMounted, ref } from 'vue';
+import { reactive } from 'vue';
+import { useMainApi } from '@/apis';
+import { useRouter } from 'vue-router';
+
+const useLoginFormState = () => {
+  return reactive({
+    loginId: "",
+    loginPw: "",
+  });
+};
 
 export default  {
   name: 'Login',
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonLabel, IonInput, IonItem, IonButton, IonCustomBody, IonCustomLink },
   setup() {
     const globalState = useGlobalState();
+    const loginFormState = useLoginFormState();
+    
+    const router = useRouter();
+    const mainApi = useMainApi();
 
-    const loginIdInput = ref();
+    function login(loginId: string, loginPw: string) {
+      mainApi.member_authKey(loginId, loginPw)
+        .then(axiosResponse => {
+          alert(axiosResponse.data.msg);
+          if ( axiosResponse.data.fail ) {
+            return;
+          }
+          const authKey = axiosResponse.data.body.authKey;
+          const loginedMember = axiosResponse.data.body.member;
 
-    onMounted(async () => {
-      if ( !!loginIdInput.value == false ) return;
+          alert(authKey);
 
-      setTimeout(async () => {
-        await loginIdInput.value.$el.setFocus();
-      }, 2000);
+          //globalState.setLogined(authKey, loginedMember);
+          
+          router.replace('/');
+        });
+    }
 
-      /*
-      loginIdInput.value.$el.getInputElement().then((input: any) => {
-        input.value = 555;
-      });
-      */
-      
-      
-      //const input = await loginIdInput.value.$el.getInputElement();
-    });
+    function checkAndLogin() {
+      if ( loginFormState.loginId.trim().length == 0 ) {
+        alert('로그인아이디를 입력해주세요.');
+        return;
+      }
+
+      if ( loginFormState.loginPw.trim().length == 0 ) {
+        alert('로그인비밀번호를 입력해주세요.');
+        return;
+      }
+
+      login(loginFormState.loginId, loginFormState.loginPw);
+    }
 
     return {
       globalState,
-      loginIdInput
+      loginFormState,
+      checkAndLogin
     }
   }
 }
