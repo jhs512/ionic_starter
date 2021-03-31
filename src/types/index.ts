@@ -1,9 +1,3 @@
-export class MainService {
-  getMemberThumbImgUrl(member: Member) {
-    return "https://i.pravatar.cc/45?img=13&k=" + member.id
-  }
-}
-
 export interface GlobalState {
   loginedMember: Member;
   authKey: string;

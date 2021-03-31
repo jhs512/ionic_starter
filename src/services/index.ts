@@ -1,5 +1,23 @@
-import { MainService } from "@/types";
+import { Member } from "@/types";
 import { inject } from "vue";
+import { getMainApi, MainApi } from "@/apis"
+
+export class MainService {
+  private mainApi: MainApi;
+
+  constructor() {
+    this.mainApi = getMainApi();
+  }
+
+  /* eslint-disable @typescript-eslint/camelcase */
+  member_authKey(loginId: string, loginPw: string) {
+    return this.mainApi.member_authKey(loginId, loginPw);
+  }
+
+  getMemberThumbImgUrl(member: Member) {
+    return "https://i.pravatar.cc/45?img=13&k=" + member.id
+  }
+}
 
 export const mainServiceSymbol = Symbol('globalState');
 

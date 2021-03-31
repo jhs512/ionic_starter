@@ -55,7 +55,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonInpu
 import {IonCustomBody, IonCustomHeader, IonCustomLink} from '@/components/';
 import { useGlobalState } from '@/stores'
 import { reactive } from 'vue';
-import { useMainApi } from '@/apis';
+import { useMainService } from '@/services';
 import { useRouter } from 'vue-router';
 import * as util from "@/utils";
 
@@ -74,10 +74,10 @@ export default  {
     const loginFormState = useLoginFormState();
     
     const router = useRouter();
-    const mainApi = useMainApi();
+    const mainService = useMainService();
 
     function login(loginId: string, loginPw: string) {
-      mainApi.member_authKey(loginId, loginPw)
+      mainService.member_authKey(loginId, loginPw)
         .then(axiosResponse => {
           util.showAlert(axiosResponse.data.msg);
 
