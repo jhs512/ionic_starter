@@ -15,7 +15,9 @@ export class MainService {
   }
 
   getMemberThumbImgUrl(member: Member) {
-    return "https://i.pravatar.cc/45?img=13&k=" + member.id
+    const originUrl = 'http://localhost:8021/common/genFile/file/member/' + member.id + '/common/attachment/1';
+    const url = 'http://localhost:8085/img?failWidth=40&failHeight=40&failText=U.U&width=40&height=40&url=' + originUrl;
+    return url;
   }
 }
 
