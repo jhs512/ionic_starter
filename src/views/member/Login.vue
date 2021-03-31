@@ -76,21 +76,21 @@ export default  {
     const router = useRouter();
     const mainService = useMainService();
 
-    function login(loginId: string, loginPw: string) {
-      mainService.member_authKey(loginId, loginPw)
-        .then(axiosResponse => {
-          util.showAlert(axiosResponse.data.msg);
+    async function login(loginId: string, loginPw: string) {
+      
+      const axiosResponse = await mainService.member_authKey(loginId, loginPw)
 
-          if ( axiosResponse.data.fail ) {
-            return;
-          }
-          const authKey = axiosResponse.data.body.authKey;
-          const loginedMember = axiosResponse.data.body.member;
+      util.showAlert(axiosResponse.data.msg);
 
-          globalState.setLogined(authKey, loginedMember);
-          
-          router.replace('/');
-        });
+      if ( axiosResponse.data.fail ) {
+        return;
+      }
+      const authKey = axiosResponse.data.body.authKey;
+      const loginedMember = axiosResponse.data.body.member;
+
+      globalState.setLogined(authKey, loginedMember);
+      
+      router.replace('/');
     }
 
     function checkAndLogin() {
