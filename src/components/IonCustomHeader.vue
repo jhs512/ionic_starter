@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar>
       <div class="pr-5" slot="end">
-        <router-link v-if="globalState.isLogined" to="/member/myPage" class="cursor-pointer"><img class="rounded-full" :src="mainService.getMemberThumbImgUrl(globalState.loginedMember)" alt=""></router-link>
+        <router-link v-if="globalState.isLogined" to="/member/myPage" class="cursor-pointer"><img class="rounded-full" :src="mainService.getMemberThumbImgUrl(globalState.loginedMember.id)" alt=""></router-link>
       </div>
       <ion-title>
         <slot></slot>

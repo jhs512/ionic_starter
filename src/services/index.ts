@@ -1,4 +1,3 @@
-import { Member } from "@/types";
 import { inject } from "vue";
 import { getMainApi, MainApi } from "@/apis"
 
@@ -14,9 +13,23 @@ export class MainService {
     return this.mainApi.member_authKey(loginId, loginPw);
   }
 
-  getMemberThumbImgUrl(member: Member) {
-    const originUrl = 'http://localhost:8021/common/genFile/file/member/' + member.id + '/common/attachment/1';
-    const url = 'http://localhost:8085/img?failWidth=40&failHeight=40&failText=U.U&width=40&height=40&url=' + originUrl;
+  /* eslint-disable @typescript-eslint/camelcase */
+  article_list(boardId: number) {
+    return this.mainApi.article_list(boardId);
+  }
+
+  /* eslint-disable @typescript-eslint/no-inferrable-types */
+  getMemberThumbImgUrl(id: number, width: number = 40, height: number = 40) {
+
+    const originUrl = 'http://localhost:8021/common/genFile/file/member/' + id + '/common/attachment/1';
+    const url = `http://localhost:8085/img?failWidth=${width}&failHeight=${height}&failText=U.U&width=${width}&height=${height}&url=` + originUrl;
+    return url;
+  }
+
+  /* eslint-disable @typescript-eslint/no-inferrable-types */
+  getArticleThumbImgUrl(id: number, width: number = 100, height: number = 100) {
+    const originUrl = 'http://localhost:8021/common/genFile/file/article/' + id + '/common/attachment/1';
+    const url = `http://localhost:8085/img?failWidth=${width}&failHeight=${height}&failText=U.U&width=${width}&height=${height}&url=` + originUrl;
     return url;
   }
 }
