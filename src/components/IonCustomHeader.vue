@@ -14,9 +14,11 @@
 <script lang="ts">
 import { useGlobalState } from '@/stores'
 import { useMainService } from '@/services'
+import { IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
 
 export default {
   name: 'IonCustomHeader',
+  components: {IonHeader, IonToolbar, IonTitle},
   setup() {
     const globalState = useGlobalState();
     const mainService = useMainService();

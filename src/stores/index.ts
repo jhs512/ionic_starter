@@ -75,4 +75,4 @@ export const createGlobalState = () => {
 };
 
 export const useGlobalState = (): GlobalState => inject(globalStateSymbol) as GlobalState;
-export const useGlobalStateOnOutsideOfVue = createGlobalState;
+export const getGlobalState = createGlobalState;
